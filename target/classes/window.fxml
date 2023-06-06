@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bsu.CorrelationFunction.Controller">
+   <top>
+      <HBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="624.0">
+               <HBox.margin>
+                  <Insets left="8.0" right="8.0" />
+               </HBox.margin>
+               <children>
+                  <Button fx:id="openImgButtonOne" mnemonicParsing="false" onAction="#openImgButtonClicked" prefHeight="32.0" prefWidth="88.0" text="Открыть">
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin></Button>
+                  <Pane fx:id="imagePaneOne" maxWidth="624.0" minHeight="351.0" minWidth="624.0" onMouseEntered="#mouseEnteredPane" prefHeight="351.0" prefWidth="624.0">
+                     <children>
+                        <ScrollPane fx:id="scrollPaneOne" hbarPolicy="NEVER" prefHeight="351.0" prefWidth="624.0" vbarPolicy="NEVER">
+                           <content>
+                              <ImageView fx:id="imageOne" fitHeight="351.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox prefHeight="400.0" prefWidth="624.0">
+               <children>
+                  <Button fx:id="openImgButtonTwo" mnemonicParsing="false" onAction="#openImgButtonClicked" prefHeight="32.0" prefWidth="88.0" text="Открыть">
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin></Button>
+                  <Pane fx:id="imagePaneTwo" maxHeight="351.0" maxWidth="624.0" minHeight="351.0" minWidth="624.0" onMouseEntered="#mouseEnteredPane" prefHeight="351.0" prefWidth="624.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <ScrollPane fx:id="scrollPaneTwo" hbarPolicy="NEVER" prefHeight="351.0" prefWidth="624.0" vbarPolicy="NEVER">
+                           <content>
+                              <ImageView fx:id="imageTwo" fitHeight="351.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </Pane>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" right="8.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="280.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fx:id="lineChartPane" maxHeight="280.0" maxWidth="1280.0" minHeight="280.0" minWidth="1280.0" pannable="true" vbarPolicy="NEVER">
+               <content>
+                  <LineChart fx:id="lineChart" horizontalZeroLineVisible="false" legendVisible="false" maxHeight="280.0" minHeight="280.0" minWidth="1280.0" verticalGridLinesVisible="false">
+                    <xAxis>
+                      <NumberAxis autoRanging="false" forceZeroInRange="false" side="BOTTOM" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxis" autoRanging="false" forceZeroInRange="false" maxHeight="300.0" minorTickCount="1" side="LEFT" tickUnit="0.1" upperBound="1.0" />
+                    </yAxis>
+                  </LineChart>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox prefHeight="40.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="40.0" prefWidth="357.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="387.0">
+                     <children>
+                        <Button fx:id="selectAreaButton" mnemonicParsing="false" onAction="#selectAreaButtonClicked" text="Выделить область" />
+                        <Button fx:id="dropSelection" mnemonicParsing="false" onAction="#dropSelectionButtonClicked" text="Отменить выделение" />
+                        <ComboBox fx:id="colorBox" prefHeight="25.0" prefWidth="95.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="73.0" prefWidth="580.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="221.0">
+                     <children>
+                        <TextField fx:id="scaleField" editable="false" prefHeight="25.0" prefWidth="56.0" text="0%" />
+                        <Button fx:id="plusScale" mnemonicParsing="false" onAction="#scaleIncreased" prefHeight="17.0" prefWidth="36.0" text="+" />
+                        <Button fx:id="minusScale" mnemonicParsing="false" onAction="#scaleDecreased" prefHeight="17.0" prefWidth="36.0" text="-" />
+                        <TextField fx:id="maxValueField" editable="false" prefHeight="25.0" prefWidth="248.0" promptText="Максимум функции:" />
+                        <TextField fx:id="shiftValueField" editable="false" prefHeight="25.0" prefWidth="200.0" promptText="Смещение:" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" right="8.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="73.0" prefWidth="350.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="similaritiesButton" mnemonicParsing="false" onAction="#similaritiesButtonClicked" prefHeight="25.0" prefWidth="138.0" text="Поиск соответствий" />
+                        <Button fx:id="differencesButton" mnemonicParsing="false" onAction="#differencesButtonClicked" text="Поиск различий" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
